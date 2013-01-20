@@ -3,6 +3,34 @@
 var express = require('express');
 var fs      = require('fs');
 
+var asset = require('./assets.json');
+
+var getAssetSync = function(type, version) {
+    //
+    if (typeof version === 'undefined')
+      version = 'newest';
+    if (typeof asset[type][version] === 'undefined')
+        return 'Invalid version number';
+    else
+        return fs.readFileSync(asset[type][version]);
+}
+
+var getAsset = function(type, version, res) {
+    //
+    if (typeof version === 'undefined')
+      version = 'newest';
+    if (typeof asset[type][version] === 'undefined')
+        return 'Invalid version number';
+    else
+        fs.readFile(asset[type][version], function(err, data){
+            if (err)
+                console.error(err);
+            if (data)
+                res.send(data);
+            else
+                res.send('No data available.');
+        });
+}
 
 /**
  *  Define the sample application.
@@ -39,11 +67,21 @@ var SampleApp = function() {
      */
     self.populateCache = function() {
         if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
+            self.zcache = { 
+                'index.html': '' ,
+                'jQuery': '',
+                'bootstrap': '',
+                'bootstrap-css': '',
+                'backbone': ''
+            };
         }
 
         //  Local cache for static content.
         self.zcache['index.html'] = fs.readFileSync('./index.html');
+        self.zcache['jQuery'] = getAssetSync('jQuery');
+        self.zcache['bootstrap'] = getAssetSync('bootstrap');
+        self.zcache['bootstrap-css'] = getAssetSync('bootstrap-css');
+        self.zcache['backbone'] = getAssetSync('backbone');
     };
 
 
@@ -94,20 +132,66 @@ var SampleApp = function() {
      */
     self.createRoutes = function() {
         self.routes = { };
-
-        // Routes for /health, /asciimo and /
-        self.routes['/health'] = function(req, res) {
-            res.send('1');
-        };
-
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
+        // Routes
 
         self.routes['/'] = function(req, res) {
             res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
+            res.send(self.cache_get('index.html'));
+        };
+
+        self.routes['/jQuery'] = function(req, res) {
+            res.setHeader('Content-Type', 'text/javascript');
+            if (typeof req.query.v === 'undefined' && typeof req.query.dev === 'undefined')
+                res.send(self.cache_get('jQuery') );
+            else {
+                if (req.query.dev)
+                    getAsset('jQuery-dev', req.query.v, res);
+                else
+                    getAsset('jQuery', req.query.v, res);
+            }
+        };
+
+        self.routes['/bootstrap-css'] = function(req, res) {
+            res.setHeader('Content-Type', 'text/css');
+            if (typeof req.query.v === 'undefined' && typeof req.query.dev === 'undefined' && typeof req.query.icon === 'undefined')
+                res.send(self.cache_get('bootstrap-css') );
+            else {
+                if (req.query.icon == 'false') {
+                    if (req.query.dev)
+                        getAsset('bootstrap-css-noicon-dev', req.query.v, res);
+                    else
+                        getAsset('bootstrap-css-noicon', req.query.v, res);
+                } else {
+                    if (req.query.dev)
+                        getAsset('bootstrap-css-dev', req.query.v, res);
+                    else
+                        getAsset('bootstrap-css', req.query.v, res);
+                }
+            }
+        };
+
+        self.routes['/bootstrap'] = function(req, res) {
+            res.setHeader('Content-Type', 'text/javascript');
+            if (typeof req.query.v === 'undefined' && typeof req.query.dev === 'undefined')
+                res.send(self.cache_get('bootstrap') );
+            else {
+                if (req.query.dev)
+                    getAsset('bootstrap-dev', req.query.v, res);
+                else
+                    getAsset('bootstrap', req.query.v, res);
+            }
+        };
+
+        self.routes['/backbone'] = function(req, res) {
+            res.setHeader('Content-Type', 'text/javascript');
+            if (typeof req.query.v === 'undefined' && typeof req.query.dev === 'undefined')
+                res.send(self.cache_get('backbone') );
+            else {
+                if (req.query.dev)
+                    getAsset('backbone-dev', req.query.v, res);
+                else
+                    getAsset('backbone', req.query.v, res);
+            }
         };
     };
 
@@ -119,6 +203,7 @@ var SampleApp = function() {
     self.initializeServer = function() {
         self.createRoutes();
         self.app = express.createServer();
+        self.app.use(express.static(__dirname + '/assets'));
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {

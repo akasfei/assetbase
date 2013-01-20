@@ -1,0 +1,58 @@
+{
+  "jQuery" : {
+    "newest" : "./assets/jQuery/jquery-1.9.0.min.js",
+    "1.9.0" : "./assets/jQuery/jquery-1.9.0.min.js",
+    "1.8.3" : "./assets/jQuery/jquery-1.8.3.min.js",
+    "1.8.2" : "./assets/jQuery/jquery-1.8.2.min.js",
+    "1.8.1" : "./assets/jQuery/jquery-1.8.1.min.js",
+    "1.8.0" : "./assets/jQuery/jquery-1.8.0.min.js",
+    "1.7.2" : "./assets/jQuery/jquery-1.7.2.min.js",
+    "1.7.1" : "./assets/jQuery/jquery-1.7.1.min.js",
+    "1.6.4" : "./assets/jQuery/jquery-1.6.4.min.js",
+    "1.6.3" : "./assets/jQuery/jquery-1.6.3.min.js"
+  },
+  "jQuery-dev" : {
+    "newest" : "./assets/jQuery/jquery-1.9.0.js",
+    "1.9.0" : "./assets/jQuery/jquery-1.9.0.js",
+    "1.8.3" : "./assets/jQuery/jquery-1.8.3.js",
+    "1.8.2" : "./assets/jQuery/jquery-1.8.2.js",
+    "1.8.1" : "./assets/jQuery/jquery-1.8.1.js",
+    "1.8.0" : "./assets/jQuery/jquery-1.8.0.js",
+    "1.7.2" : "./assets/jQuery/jquery-1.7.2.js",
+    "1.7.1" : "./assets/jQuery/jquery-1.7.1.js",
+    "1.6.4" : "./assets/jQuery/jquery-1.6.4.js",
+    "1.6.3" : "./assets/jQuery/jquery-1.6.3.js"
+  },
+  "bootstrap" : {
+    "newest" : "./assets/bootstrap/js/bootstrap-2.2.2.min.js",
+    "2.2.2" : "./assets/bootstrap/js/bootstrap-2.2.2.min.js"
+  },
+  "bootstrap-dev" : {
+    "newest" : "./assets/bootstrap/js/bootstrap-2.2.2.js",
+    "2.2.2" : "./assets/bootstrap/js/bootstrap-2.2.2.js"
+  },
+  "bootstrap-css-noicon" : {
+    "newest" : "./assets/bootstrap/css/bootstrap-2.2.2-noicon.min.css",
+    "2.2.2" : "./assets/bootstrap/css/bootstrap-2.2.2-noicon.min.css"
+  },
+  "bootstrap-css-noicon-dev" : {
+    "newest" : "./assets/bootstrap/css/bootstrap-2.2.2-noicon.css",
+    "2.2.2" : "./assets/bootstrap/css/bootstrap-2.2.2-noicon.css"
+  },
+  "bootstrap-css" : {
+    "newest" : "./assets/bootstrap/css/bootstrap-2.2.2.min.css",
+    "2.2.2" : "./assets/bootstrap/css/bootstrap-2.2.2.min.css"
+  },
+  "bootstrap-css-dev" : {
+    "newest" : "./assets/bootstrap/css/bootstrap-2.2.2.css",
+    "2.2.2" : "./assets/bootstrap/css/bootstrap-2.2.2.css"
+  },
+  "backbone" : {
+    "newest" : "./assets/backbone/backbone-0.9.10-min.js",
+    "0.9.10" : "./assets/backbone/backbone-0.9.10-min.js"
+  },
+  "backbone-dev" : {
+    "newest" : "./assets/backbone/backbone-0.9.10.js",
+    "0.9.10" : "./assets/backbone/backbone-0.9.10.js"
+  }
+}
