@@ -1,22 +1,22 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "Assetbase",
   "version": "0.1.0",
-  "description": "OpenShift Sample Application",
+  "description": "Get newest js libaries everywhere",
   "keywords": [
-    "OpenShift",
+    "js",
     "Node.js",
     "application",
     "openshift"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url":  "http://openshift.redhat.com/"
+    "name": "SFEI",
+    "email": "akasfei@gmail.com",
+    "url":  "http://sfeisys.cloudfoundry.com/"
   },
-  "homepage": "http://openshift.redhat.com/",
+  "homepage": "http://assetbase-sfei.rhcloud.com/",
   "repository": {
     "type": "git",
-    "url": "https://gitub.com/openshift/origin-server"
+    "url": "https://gitub.com/akasfei/assetbase"
   },
 
   "engines": {
