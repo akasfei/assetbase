@@ -27,3 +27,5 @@ This url gets jQuery version 1.8.1
 > http://assetbase-sfei.rhcloud.com/jQuery/?dev=true
 
 This url gets the latest jQuery, development(not gziped)
+
+You can also combine those two parameters.
